@@ -1,0 +1,33 @@
+# server.port=8080
+# server.servlet.context-path=/hello
+
+#server:
+#  port: 8080
+#  servlet:
+#    context-path: /hello
+
+student:
+  name: Jim
+  age: 22
+content: "name: ${student.name}, age: ${student.age}"
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/student?characterEncoding=UTF-8
+    password: "root"
+    username: "root"
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update # 新增数据库必备参数
+    show-sql: true
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/jsp/
+#      suffix: .jsp
+#    static-path-pattern: /**
+
+#logging:
+#  config: classpath:logging-config.xml
+debug: false
