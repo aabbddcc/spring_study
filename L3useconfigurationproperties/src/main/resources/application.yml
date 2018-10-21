@@ -1,3 +1,7 @@
 student:
   name: Jim
   age: 22
+
+spring:
+  profiles:
+    active: prod
