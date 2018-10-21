@@ -31,10 +31,10 @@ public class DemoJpaApplicationTests {
         userRepository.save(new User("HHH", 80));
         userRepository.save(new User("III", 90));
         userRepository.save(new User("JJJ", 100));
-        int sizeAfter =  userRepository.findAll().size();
+        int sizeAfter = userRepository.findAll().size();
 
         // 测试findAll, 查询所有记录
-		Assert.assertEquals(10, sizeAfter - sizeBefore);
+        Assert.assertEquals(10, sizeAfter - sizeBefore);
 
         // 测试findByName, 查询姓名为FFF的User
         Assert.assertEquals(60, userRepository.findByName("FFF").get(0).getAge().longValue());
@@ -48,7 +48,7 @@ public class DemoJpaApplicationTests {
         // 测试删除姓名为AAA的User
         sizeBefore = userRepository.findAll().size();
         userRepository.delete(userRepository.findByName("AAA").get(0));
-        sizeAfter =  userRepository.findAll().size();
+        sizeAfter = userRepository.findAll().size();
 
         // 测试findAll, 查询所有记录, 验证上面的删除是否成功
         Assert.assertEquals(1, sizeBefore - sizeAfter);

@@ -20,7 +20,7 @@ public class HelloController {
 
     @RequestMapping("/student")
     private String student(String name, Integer age) {
-        if (name==null){
+        if (name == null) {
             name = student_default.getName();
         }
         if (age == null) {

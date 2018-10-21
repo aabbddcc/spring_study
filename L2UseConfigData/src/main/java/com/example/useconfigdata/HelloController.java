@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @Value("${student.name}")
-    private  String name;
+    private String name;
 
     @Value("${student.age}")
-    private  Integer age;
+    private Integer age;
 
     @Value("${content}")
-    private  String content;
+    private String content;
 
     @RequestMapping("/")
-    private String index(){
+    private String index() {
         return content;
     }
 
     @RequestMapping("/index")
-    private String index2(){
+    private String index2() {
         return String.format("student: %s, age: %d\n", this.name, this.age);
     }
 }
