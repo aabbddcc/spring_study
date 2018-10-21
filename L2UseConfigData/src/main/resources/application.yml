@@ -1,0 +1,4 @@
+student:
+  name: Jim
+  age: 22
+content: "name: ${student.name}, age: ${student.age}"
