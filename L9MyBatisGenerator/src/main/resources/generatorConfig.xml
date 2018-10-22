@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <!--导入属性配置 -->
+    <properties resource="application.yml"/>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!--是否在代码中显示注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--jdbc的数据库连接 -->
+        <!--<jdbcConnection-->
+        <!--connectionURL="${spring.datasource.url}"-->
+        <!--userId="${spring.datasource.username}"-->
+        <!--password="${spring.datasource.password}"-->
+        <!--driverClass="com.mysql.jdbc.Driver"-->
+        <!--/>-->
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/student?characterEncoding=UTF-8"
+                userId="root"
+                password="root"
+                driverClass="com.mysql.jdbc.Driver"
+        />
+
+        <!--生成pojo类存放位置-->
+        <javaModelGenerator targetPackage="com.example.usemybatis.dao.model" targetProject="src/main/java">
+            <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
+            <property name="enableSubPackages" value="true"/>
+
+            <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
+            <property name="trimStrings" value="true"/>
+
+            <!-- 是否对model添加 构造函数 -->
+            <property name="constructorBased" value="true"/>
+        </javaModelGenerator>
+
+        <!--Mapper映射文件生成所在的目录 为每一个数据库的表生成对应的SqlMap文件 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--生成mapper类存放位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.usemybatis.dao.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--生成对应表及类名-->
+        <table tableName="student" domainObjectName="Student" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
+               selectByExampleQueryId="false">
+            <!--使用自增长键-->
+            <property name="my.isgen.usekeys" value="true"/>
+            <!--使用数据库中实际的字段名作为生成的实体类的属性-->
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

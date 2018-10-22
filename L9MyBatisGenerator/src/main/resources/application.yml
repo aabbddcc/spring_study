@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/student?characterEncoding=UTF-8
+    password: "root"
+    username: "root"
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
