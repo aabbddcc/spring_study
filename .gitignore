@@ -23,3 +23,6 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+/L10MyBatisCommonMapper/.mvn
+L10MyBatisCommonMapper/mvnw
+*.cmd
