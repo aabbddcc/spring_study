@@ -10,7 +10,8 @@ import java.util.List;
  * Created by tengj on 2017/4/7.
  */
 
-public interface CourseService extends BaseService<Course>{
+public interface CourseService extends BaseService<Course> {
     public List<Course> queryModelList(Page<CourseQueryList> page);
+
     public void deleteBatch(Long[] ids);
 }

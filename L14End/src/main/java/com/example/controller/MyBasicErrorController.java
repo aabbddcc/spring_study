@@ -25,23 +25,25 @@ public class MyBasicErrorController extends BasicErrorController {
 
     /**
      * 定义500的ModelAndView
+     *
      * @param request
      * @param response
      * @return
      */
-    @RequestMapping(produces = "text/html",value = "/500")
+    @RequestMapping(produces = "text/html", value = "/500")
     public ModelAndView errorHtml500(HttpServletRequest request,
                                      HttpServletResponse response) {
         response.setStatus(getStatus(request).value());
         Map<String, Object> model = getErrorAttributes(request,
                 isIncludeStackTrace(request, MediaType.TEXT_HTML));
-        model.put("msg","自定义错误信息");
+        model.put("msg", "自定义错误信息");
         return new ModelAndView("error/500", model);
     }
 
 
     /**
      * 定义500的错误JSON信息
+     *
      * @param request
      * @return
      */
@@ -57,17 +59,18 @@ public class MyBasicErrorController extends BasicErrorController {
 
     /**
      * 定义500的ModelAndView
+     *
      * @param request
      * @param response
      * @return
      */
-    @RequestMapping(produces = "text/html",value = "/404")
+    @RequestMapping(produces = "text/html", value = "/404")
     public ModelAndView errorHtml400(HttpServletRequest request,
                                      HttpServletResponse response) {
         response.setStatus(getStatus(request).value());
         Map<String, Object> model = getErrorAttributes(request,
                 isIncludeStackTrace(request, MediaType.TEXT_HTML));
-        model.put("msg","自定义错误信息");
+        model.put("msg", "自定义错误信息");
         return new ModelAndView("error/404", model);
     }
 }

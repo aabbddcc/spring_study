@@ -31,12 +31,14 @@ import java.util.List;
 
 /**
  * 通用Service
+ *
  * @param <T>
  */
 public abstract class BaseServiceImpl<T> implements BaseService<T> {
 
     @Autowired
     protected Mapper<T> mapper;
+
     public Mapper<T> getMapper() {
         return mapper;
     }

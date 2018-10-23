@@ -1,16 +1,22 @@
 package com.example.dao.model;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
+    private String password;
 
-    private String passwrod;
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
 
     /**
      * @return id
@@ -41,16 +47,16 @@ public class User {
     }
 
     /**
-     * @return passwrod
+     * @return password
      */
-    public String getPasswrod() {
-        return passwrod;
+    public String getPassword() {
+        return password;
     }
 
     /**
-     * @param passwrod
+     * @param password
      */
-    public void setPasswrod(String passwrod) {
-        this.passwrod = passwrod == null ? null : passwrod.trim();
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 }

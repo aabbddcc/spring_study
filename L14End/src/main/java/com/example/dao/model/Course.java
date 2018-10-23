@@ -1,6 +1,9 @@
 package com.example.dao.model;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Table(name = "course")
 public class Course {
@@ -10,21 +13,34 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     /**
      * 作者
      */
     private String author;
-
     /**
      * 描述
      */
     private String title;
-
     /**
      * 地址链接
      */
     private String url;
+
+    public Course() {
+    }
+
+    public Course(String author, String title, String url) {
+        this.author = author;
+        this.title = title;
+        this.url = url;
+    }
+
+    public Course(Long id, String author, String title, String url) {
+        this.id = id;
+        this.author = author;
+        this.title = title;
+        this.url = url;
+    }
 
     /**
      * 获取ID

@@ -7,14 +7,19 @@ import java.util.Map;
 
 /**
  * 分页工具类
+ *
  * @param <T>
  */
 public class Page<T> implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int page; //当前页
     private int rows; //每页多少条
-    private static final long serialVersionUID = 1L;
     private List<T> records = Collections.emptyList();
     private Map<String, Object> condition;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public int getPage() {
         return page;
@@ -30,10 +35,6 @@ public class Page<T> implements Serializable {
 
     public void setRows(int rows) {
         this.rows = rows;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     public List<T> getRecords() {

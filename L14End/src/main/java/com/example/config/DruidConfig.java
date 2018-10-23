@@ -69,7 +69,7 @@ public class DruidConfig {
 
     @Bean
     @Primary
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         DruidDataSource datasource = new DruidDataSource();
 
         datasource.setUrl(this.dbUrl);
@@ -77,44 +77,44 @@ public class DruidConfig {
         datasource.setPassword(password);
         datasource.setDriverClassName(driverClassName);
         //configuration
-        if(initialSize != null) {
+        if (initialSize != null) {
             datasource.setInitialSize(initialSize);
         }
-        if(minIdle != null) {
+        if (minIdle != null) {
             datasource.setMinIdle(minIdle);
         }
-        if(maxActive != null) {
+        if (maxActive != null) {
             datasource.setMaxActive(maxActive);
         }
-        if(maxWait != null) {
+        if (maxWait != null) {
             datasource.setMaxWait(maxWait);
         }
-        if(timeBetweenEvictionRunsMillis != null) {
+        if (timeBetweenEvictionRunsMillis != null) {
             datasource.setTimeBetweenEvictionRunsMillis(timeBetweenEvictionRunsMillis);
         }
-        if(minEvictableIdleTimeMillis != null) {
+        if (minEvictableIdleTimeMillis != null) {
             datasource.setMinEvictableIdleTimeMillis(minEvictableIdleTimeMillis);
         }
-        if(validationQuery!=null) {
+        if (validationQuery != null) {
             datasource.setValidationQuery(validationQuery);
         }
-        if(testWhileIdle != null) {
+        if (testWhileIdle != null) {
             datasource.setTestWhileIdle(testWhileIdle);
         }
-        if(testOnBorrow != null) {
+        if (testOnBorrow != null) {
             datasource.setTestOnBorrow(testOnBorrow);
         }
-        if(testOnReturn != null) {
+        if (testOnReturn != null) {
             datasource.setTestOnReturn(testOnReturn);
         }
-        if(poolPreparedStatements != null) {
+        if (poolPreparedStatements != null) {
             datasource.setPoolPreparedStatements(poolPreparedStatements);
         }
-        if(maxPoolPreparedStatementPerConnectionSize != null) {
+        if (maxPoolPreparedStatementPerConnectionSize != null) {
             datasource.setMaxPoolPreparedStatementPerConnectionSize(maxPoolPreparedStatementPerConnectionSize);
         }
 
-        if(connectionProperties != null) {
+        if (connectionProperties != null) {
             datasource.setConnectionProperties(connectionProperties);
         }
 
@@ -147,7 +147,7 @@ public class DruidConfig {
     }
 
     @Bean
-    public StatFilter statFilter(){
+    public StatFilter statFilter() {
         StatFilter statFilter = new StatFilter();
         statFilter.setLogSlowSql(true); //slowSqlMillis用来配置SQL慢的标准，执行时间超过slowSqlMillis的就是慢。
         statFilter.setMergeSql(true); //SQL合并配置
@@ -156,7 +156,7 @@ public class DruidConfig {
     }
 
     @Bean
-    public WallFilter wallFilter(){
+    public WallFilter wallFilter() {
         WallFilter wallFilter = new WallFilter();
         //允许执行多条SQL
         WallConfig config = new WallConfig();

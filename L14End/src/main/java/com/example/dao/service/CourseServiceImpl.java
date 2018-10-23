@@ -22,7 +22,7 @@ public class CourseServiceImpl extends BaseServiceImpl<Course> implements Course
 
     @Override
     public void deleteBatch(Long[] ids) {
-        Arrays.stream(ids).forEach(id-> courseMapper.deleteByPrimaryKey(id));
+        Arrays.stream(ids).forEach(id -> courseMapper.deleteByPrimaryKey(id));
     }
 
     @Override
