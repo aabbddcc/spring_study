@@ -7,13 +7,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 
 @Configuration
-public class ContainerConfig implements ErrorPageRegistrar {
+public class ErrorConfig implements ErrorPageRegistrar {
 
     @Override
     public void registerErrorPages(ErrorPageRegistry registry) {
-        ErrorPage[] errorPages = new ErrorPage[2];
-        errorPages[0] = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/error/500");
-        errorPages[1] = new ErrorPage(HttpStatus.NOT_FOUND, "/error/404");
-        registry.addErrorPages(errorPages);
+        registry.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/error/500"),
+                new ErrorPage(HttpStatus.NOT_FOUND, "/error/404"));
     }
 }

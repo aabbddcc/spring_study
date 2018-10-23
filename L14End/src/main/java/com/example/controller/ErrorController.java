@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class BaseErrorController extends BaseController {
+public class ErrorController extends BaseController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping(value = "/ex")
@@ -18,7 +18,6 @@ public class BaseErrorController extends BaseController {
         int i = 5 / 0;
         return "ex";
     }
-
 
     @RequestMapping(value = "/json")
     public void json(ModelMap modelMap) {
@@ -45,7 +44,7 @@ public class BaseErrorController extends BaseController {
     }
 
 
-//    @RequestMapping("/500")
+//    @RequestMapping("/error/500")
 //    @ResponseBody
 //    public String showServerError() {
 //        return "server error";

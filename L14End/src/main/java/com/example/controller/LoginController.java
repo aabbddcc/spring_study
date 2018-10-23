@@ -22,20 +22,20 @@ import java.util.Map;
 public class LoginController extends BaseController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping("/toLogin")
-    public String toLogin(Model model) {
+    @RequestMapping("/login")
+    public String login(Model model) {
         model.addAttribute("ctx", getContextPath() + "/");
         return "login";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login_post", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> login(HttpServletRequest request, HttpServletResponse response) {
+    public Map<String, Object> login_post(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("ctx", request.getContextPath());
         Map<String, Object> map = new HashMap<String, Object>();
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
-        if (!userName.equals("") && password != "") {
+        if (!userName.equals("") /* && password != ""*/) {
             User user = new User(userName, password);
             request.getSession().setAttribute("user", user);
             map.put("result", "1");
