@@ -43,7 +43,7 @@ public class CourseServiceTest {
     @Rollback(true)
     public void getCourse() {
         // 测试插入，插入成功的话返回 1
-        int n = courseService.save(new Course("admin", "Spring boot Demo", "https://www.spring.com"));
+        int n = courseService.save(new Course(1040L, "Spring boot Demo", "https://www.spring.com"));
         Assert.assertThat(n, CoreMatchers.equalTo(1));
 
         // 测试查询

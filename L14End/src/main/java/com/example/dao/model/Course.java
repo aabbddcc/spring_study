@@ -1,46 +1,43 @@
 package com.example.dao.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "course")
 public class Course {
+    public Course(Long author, String title, String url) {
+        this.author = author;
+        this.title = title;
+        this.url = url;
+    }
+
+    public Course(Long id, Long author, String title, String url) {
+        this.id = id;
+        this.author = author;
+        this.title = title;
+        this.url = url;
+    }
+
     /**
      * ID
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     /**
      * 作者
      */
-    private String author;
+    private Long author;
+
     /**
      * 描述
      */
     private String title;
+
     /**
      * 地址链接
      */
     private String url;
-
-    public Course() {
-    }
-
-    public Course(String author, String title, String url) {
-        this.author = author;
-        this.title = title;
-        this.url = url;
-    }
-
-    public Course(Long id, String author, String title, String url) {
-        this.id = id;
-        this.author = author;
-        this.title = title;
-        this.url = url;
-    }
 
     /**
      * 获取ID
@@ -61,21 +58,17 @@ public class Course {
     }
 
     /**
-     * 获取作者
-     *
-     * @return author - 作者
+     * @return author
      */
-    public String getAuthor() {
+    public Long getAuthor() {
         return author;
     }
 
     /**
-     * 设置作者
-     *
-     * @param author 作者
+     * @param author
      */
-    public void setAuthor(String author) {
-        this.author = author == null ? null : author.trim();
+    public void setAuthor(Long author) {
+        this.author = author;
     }
 
     /**

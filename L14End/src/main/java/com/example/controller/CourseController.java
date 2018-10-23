@@ -70,7 +70,7 @@ public class CourseController extends BaseController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public AjaxObject updateCourse(@RequestBody Course course) {
-        logger.info(course.getAuthor());
+        logger.info(course.getAuthor() + "");
         courseService.updateNotNull(course);
         return AjaxObject.ok();
     }
