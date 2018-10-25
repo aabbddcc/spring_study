@@ -62,21 +62,15 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
     }
 
     @Override
-    public int updateAll(T entity) {
-        //说明：根据主键更新实体全部字段，null值会被更新
-        return mapper.updateByPrimaryKey(entity);
-    }
-
-    @Override
-    public int updateNotNull(T entity) {
+    public int update(T entity) {
         //根据主键更新属性不为null的值
         return mapper.updateByPrimaryKeySelective(entity);
     }
 
-    @Override
-    public List<T> selectByExample(Object example) {
-        //说明：根据Example条件进行查询
-        //重点：这个查询支持通过Example类指定查询列，通过selectProperties方法指定查询列
-        return mapper.selectByExample(example);
-    }
+//    @Override
+//    public List<T> selectByExample(Object example) {
+//        //说明：根据Example条件进行查询
+//        //重点：这个查询支持通过Example类指定查询列，通过selectProperties方法指定查询列
+//        return mapper.selectByExample(example);
+//    }
 }

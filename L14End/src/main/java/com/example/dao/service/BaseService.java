@@ -40,11 +40,9 @@ public interface BaseService<T> {
 
     int delete(Object key);
 
-    int updateAll(T entity);
+    int update(T entity);
 
-    int updateNotNull(T entity);
-
-    List<T> selectByExample(Object example);
+    //List<T> selectByExample(Object example);
 
     //TODO 其他...
 }

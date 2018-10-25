@@ -9,19 +9,58 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
- * Created by tengj on 2017/4/7.
  */
 @Service
 public class CourseServiceImpl extends BaseServiceImpl<Course> implements CourseService {
 
     @Autowired
-    private CourseMapper courseMapper;
+    CourseMapper courseMapper;
+
+//    @Override
+//    public Course selectByKey(Object id){
+//        return this.courseMapper.selectByKey(((Integer)id).longValue());
+//    }
+//
+//    @Override
+//    public int save(Course entity){
+//        return this.courseMapper.add(entity);
+//    }
+//
+//    @Override
+//    public int delete(Object key) {
+//        return this.courseMapper.deleteByIds(new String[]{key.toString()});
+//    }
+//
+//    @Override
+//    public int update(Course course) {
+//        if (course != null) {
+//            return this.courseMapper.update(course);
+//        }
+//        return 0;
+//    }
 
     @Override
-    public void deleteBatch(Long[] ids) {
-        Arrays.stream(ids).forEach(id -> courseMapper.deleteByPrimaryKey(id));
+    public int deleteByIds(String[] ids) {
+        return this.courseMapper.deleteByIds(ids);
+    }
+
+    @Override
+    public int deleteByIds(Long[] ids) {
+        String[] string_ids = new String[ids.length];
+
+        for (int i = 0; i < ids.length; i++) {
+            string_ids[i] = String.valueOf(ids[i]);
+        }
+        return this.courseMapper.deleteByIds(string_ids);
+    }
+
+    @Override
+    public List<Course> queryList(Map<String,Object> params) {
+        PageHelper.startPage(Integer.parseInt(params.get("page").toString()), Integer.parseInt(params.get("rows").toString()));
+        return this.courseMapper.queryList(params);
     }
 
     @Override

@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 教程页面
@@ -46,7 +48,12 @@ public class CourseController extends BaseController {
     @ResponseBody
     public AjaxObject queryCourse(Page<?> page) {
         PageHelper.startPage(page.getPage(), page.getRows());
-        List<Course> courseList = courseService.queryList(page);
+
+        Map<String,Object> pageParams = new HashMap<String,Object>();
+        pageParams.put("page", page.getPage());
+        pageParams.put("rows", page.getRows());
+
+        List<Course> courseList = courseService.queryList(pageParams);
         PageInfo<Course> pageInfo = new PageInfo<Course>(courseList);
         return AjaxObject.ok().put("page", pageInfo);
     }
@@ -72,7 +79,7 @@ public class CourseController extends BaseController {
     @ResponseBody
     public AjaxObject updateCourse(@RequestBody Course course) {
         logger.info(course.getAuthor() + "");
-        courseService.updateNotNull(course);
+        courseService.update(course);
         return AjaxObject.ok();
     }
 
@@ -84,7 +91,7 @@ public class CourseController extends BaseController {
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
     public AjaxObject deleteCourse(@RequestBody Long[] ids) {
-        courseService.deleteBatch(ids);
+        courseService.deleteByIds(ids);
         return AjaxObject.ok();
     }
 }

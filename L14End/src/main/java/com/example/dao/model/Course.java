@@ -1,9 +1,18 @@
 package com.example.dao.model;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Table(name = "course")
 public class Course {
+    public Course(){
+    }
+
     public Course(Long author, String title, String url) {
         this.author = author;
         this.title = title;
@@ -24,10 +33,16 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /**
-     * 作者
-     */
     private Long author;
+    private String authorName;
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
 
     /**
      * 描述
