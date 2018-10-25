@@ -1,5 +1,6 @@
 package com.example.dao.model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -8,6 +9,19 @@ public class User {
     public User(String name, String password) {
         this.name = name;
         this.password = password;
+    }
+
+    public User(Long id, String name, String password, String nicky, String phone, String email, String sex, String birthday, Timestamp createtime, Timestamp updatetime) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.nicky = nicky;
+        this.phone = phone;
+        this.email = email;
+        this.sex = sex;
+        this.birthday = birthday;
+        this.createtime = createtime;
+        this.updatetime = updatetime;
     }
 
     /**
@@ -55,12 +69,12 @@ public class User {
     /**
      * 创建时间
      */
-    private Date createtime;
+    private Timestamp createtime;
 
     /**
      * 修改时间
      */
-    private Date updatetime;
+    private Timestamp updatetime;
 
     /**
      * 获取ID
@@ -220,7 +234,7 @@ public class User {
      *
      * @param createtime 创建时间
      */
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(Timestamp createtime) {
         this.createtime = createtime;
     }
 
@@ -238,7 +252,7 @@ public class User {
      *
      * @param updatetime 修改时间
      */
-    public void setUpdatetime(Date updatetime) {
+    public void setUpdatetime(Timestamp updatetime) {
         this.updatetime = updatetime;
     }
 }

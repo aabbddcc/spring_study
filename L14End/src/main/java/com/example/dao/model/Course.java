@@ -13,15 +13,15 @@ public class Course {
     public Course(){
     }
 
-    public Course(Long author, String title, String url) {
-        this.author = author;
+    public Course(Long author_id, String title, String url) {
+        this.author_id = author_id;
         this.title = title;
         this.url = url;
     }
 
-    public Course(Long id, Long author, String title, String url) {
+    public Course(Long id, Long author_id, String title, String url) {
         this.id = id;
-        this.author = author;
+        this.author_id = author_id;
         this.title = title;
         this.url = url;
     }
@@ -33,16 +33,8 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long author;
-    private String authorName;
-
-    public String getAuthorName() {
-        return authorName;
-    }
-
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
-    }
+    private Long author_id;
+    private String author;
 
     /**
      * 描述
@@ -75,14 +67,14 @@ public class Course {
     /**
      * @return author
      */
-    public Long getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
     /**
      * @param author
      */
-    public void setAuthor(Long author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 

@@ -31,12 +31,21 @@ public interface CourseMapper extends CommonMapper<Course> {
     @Select("select * from course where id = #{id}")
     @Results(id = "learnMap", value = {
             @Result(column = "id", property = "id", javaType = Long.class),
-            @Result(property = "author", column = "author", javaType = String.class),
-            @Result(property = "title", column = "title", javaType = String.class)
+            @Result(property = "author", column = "author", javaType = Long.class),
+            @Result(property = "title", column = "title", javaType = String.class),
+            @Result(property = "user", column = "author",
+                    one = @One(select = "com.example.dao.mapper.UserMapper.findUserById"))
     })
     Course selectByKey(@Param("id") Long id);
 
     @SelectProvider(type = CourseSqlBuilder.class, method = "queryCourseByParams")
+    @Results({
+            @Result(column = "id", property = "id", javaType = Long.class),
+            @Result(property = "author_id", column = "author", javaType = Long.class),
+            @Result(property = "title", column = "title", javaType = String.class),
+            @Result(property = "author", column = "author",
+                    one = @One(select = "com.example.dao.mapper.UserMapper.findUserNickyById"))
+    })
     List<Course> queryList(Map<String, Object> params);
 
     class CourseSqlBuilder {

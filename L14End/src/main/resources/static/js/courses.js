@@ -10,10 +10,11 @@ $(function () {
         mtype: 'POST',
         height: window.screen.height - 550,
         colModel: [
-            {label: 'id', name: 'id', width: 75, hidden: true},
-            {label: '作者', name: 'author', width: 200},
+            {label: '教程ID', name: 'id', width: 40, hidden: false},
+            {label: '作者ID', name: 'author_id', width: 60, hidden: true},
+            {label: '作者', name: 'author', width: 80},
             {label: '教程名称', name: 'title', width: 200},
-            {label: '地址', name: 'url', width: 200, hidden: true},
+            {label: '地址', name: 'url', width: 300, hidden: false},
             {
                 label: '地址', name: 'opt', width: 200, formatter: function (cellvalue, options, cell) {
                     return '<a  href="' + cell.url + '" class="btn btn-purple btn-sm" target="_blank"><i class="fa fa-cog  fa-spin" aria-hidden="true"></i>点我</a>';
