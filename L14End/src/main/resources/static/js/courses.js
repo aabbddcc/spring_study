@@ -3,9 +3,9 @@ $(function () {
     $(window).resize(function () {
         $("#jqGrid").setGridWidth($(window).width() * 0.95);
     });
-    console.info(baseURL + "/course/queryLeanList");
+    console.info(baseURL + "/course/queryCourseList");
     $("#jqGrid").jqGrid({
-        url: baseURL + "course/queryLeanList",
+        url: baseURL + "course/queryCourseList",
         datatype: "json",
         mtype: 'POST',
         height: window.screen.height - 550,

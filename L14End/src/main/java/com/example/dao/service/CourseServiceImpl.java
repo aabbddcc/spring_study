@@ -2,7 +2,6 @@ package com.example.dao.service;
 
 import com.example.dao.mapper.CourseMapper;
 import com.example.dao.model.Course;
-import com.example.dao.model.CourseQueryList;
 import com.example.util.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +25,7 @@ public class CourseServiceImpl extends BaseServiceImpl<Course> implements Course
     }
 
     @Override
-    public List<Course> queryModelList(Page<CourseQueryList> page) {
-        PageHelper.startPage(page.getPage(), page.getRows());
-        return courseMapper.queryModelList(page.getCondition());
+    public List<Course> queryList(Page<?> page) {
+        return courseMapper.queryList(page.getCondition());
     }
 }

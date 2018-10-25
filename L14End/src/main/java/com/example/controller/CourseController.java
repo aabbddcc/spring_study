@@ -2,10 +2,10 @@ package com.example.controller;
 
 
 import com.example.dao.model.Course;
-import com.example.dao.model.CourseQueryList;
 import com.example.dao.service.CourseService;
 import com.example.util.AjaxObject;
 import com.example.util.Page;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,10 +42,11 @@ public class CourseController extends BaseController {
      * @param page
      * @return
      */
-    @RequestMapping(value = "/queryLeanList", method = RequestMethod.POST)
+    @RequestMapping(value = "/queryCourseList", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxObject queryCourse(Page<CourseQueryList> page) {
-        List<Course> courseList = courseService.queryModelList(page);
+    public AjaxObject queryCourse(Page<?> page) {
+        PageHelper.startPage(page.getPage(), page.getRows());
+        List<Course> courseList = courseService.queryList(page);
         PageInfo<Course> pageInfo = new PageInfo<Course>(courseList);
         return AjaxObject.ok().put("page", pageInfo);
     }

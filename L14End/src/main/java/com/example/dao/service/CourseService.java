@@ -1,7 +1,6 @@
 package com.example.dao.service;
 
 import com.example.dao.model.Course;
-import com.example.dao.model.CourseQueryList;
 import com.example.util.Page;
 
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
  */
 
 public interface CourseService extends BaseService<Course> {
-    public List<Course> queryModelList(Page<CourseQueryList> page);
+    public List<Course> queryList(Page<?> page);
 
     public void deleteBatch(Long[] ids);
 }
