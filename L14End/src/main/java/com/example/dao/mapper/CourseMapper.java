@@ -11,6 +11,7 @@ import java.util.Map;
 
 /**
  * Component注解不添加也没没关系，不加的话service在引入LearnMapper会有错误提示，但不影响
+ * SpringBoot使用Mybatis注解进行一对多和多对多查询 https://blog.csdn.net/KingBoyWorld/article/details/78966789
  */
 @Component
 @Mapper

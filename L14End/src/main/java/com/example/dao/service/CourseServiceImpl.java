@@ -19,29 +19,6 @@ public class CourseServiceImpl extends BaseServiceImpl<Course> implements Course
     @Autowired
     CourseMapper courseMapper;
 
-//    @Override
-//    public Course selectByKey(Object id){
-//        return this.courseMapper.selectByKey(((Integer)id).longValue());
-//    }
-//
-//    @Override
-//    public int save(Course entity){
-//        return this.courseMapper.add(entity);
-//    }
-//
-//    @Override
-//    public int delete(Object key) {
-//        return this.courseMapper.deleteByIds(new String[]{key.toString()});
-//    }
-//
-//    @Override
-//    public int update(Course course) {
-//        if (course != null) {
-//            return this.courseMapper.update(course);
-//        }
-//        return 0;
-//    }
-
     @Override
     public int deleteByIds(String[] ids) {
         return this.courseMapper.deleteByIds(ids);
