@@ -20,7 +20,7 @@ spring:
   jpa:
     database: mysql
     hibernate:
-      ddl-auto: update # 新增数据库必备参数
+      ddl-auto: update
     show-sql: true
 #  mvc:
 #    view:
