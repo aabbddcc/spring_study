@@ -16,7 +16,6 @@ import java.util.Map;
 @Component
 @Mapper
 public interface CourseMapper extends CommonMapper<Course> {
-//public interface CourseMapper {
     String getAuthorName(Long id);
 
     @Insert("insert into course(author, title,url) values(#{author},#{title},#{url})")
