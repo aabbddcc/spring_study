@@ -1,7 +1,9 @@
 package com.example;
 
 import com.example.dao.model.User;
+import org.hamcrest.CoreMatchers;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,9 +12,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -86,14 +90,18 @@ public class CourseControllerTest {
     @Test
     public void updateCourse() throws Exception {
         String json = "{\"author\":\"测试修改\",\"id\":1031,\"title\":\"Spring教程\",\"url\":\"http://www.spring.com\"}";
-        mvc.perform(MockMvcRequestBuilders.post("/course/update")
+        MvcResult result = mvc.perform(MockMvcRequestBuilders.post("/course/update")
                 .accept(MediaType.APPLICATION_JSON_UTF8)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(json.getBytes())//传json参数
                 .session(session)
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(MockMvcResultHandlers.print());
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+
+        MockHttpServletResponse response = result.getResponse();
+        Assert.assertThat(response.getStatus(), CoreMatchers.equalTo(200));
     }
 
     /**
